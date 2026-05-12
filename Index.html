@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>EcoV Materials — Circular Critical Minerals Infrastructure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="EcoV Materials builds traceable circular supply chains by converting end-of-life electronics into compliant critical minerals feedstock." />
+  <style>
+    :root{
+      --bg:#0B1110;
+      --panel:#0F1716;
+      --panel2:#0C1413;
+      --text:#EAF2EE;
+      --muted:#A7B4AD;
+      --muted2:#7E8B85;
+      --brand:#34D399; /* emerald */
+      --brand2:#22D3EE; /* cyan */
+      --border:rgba(255,255,255,.10);
+      --border2:rgba(255,255,255,.06);
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+      --radius: 28px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 10% 0%, rgba(52,211,153,.16), transparent 50%),
+                  radial-gradient(900px 600px at 100% 20%, rgba(34,211,238,.12), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--brand)}
+
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px;}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,17,16,.75);
+      border-bottom:1px solid var(--border2);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+
+    /* Logo top-left */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .brand img{
+      height:56px;
+      width:auto;
+      display:block;
+    }
+    .brand .wordmark{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brand .wordmark strong{
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .brand .wordmark small{
+      color:var(--muted2);
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      margin-top:4px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.02em;
+      padding:10px 10px;
+      border-radius:14px;
+      white-space:nowrap;
+      transition: all .18s ease;
+    }
+    nav a:hover{background: rgba(52,211,153,.10); color:var(--text);}
+
+    .menu-btn{
+      display:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:10px 12px;
+      cursor:pointer;
+      color:var(--text);
+    }
+    .menu-btn span{
+      display:block;
+      width:22px;height:2px;
+      background:#fff;
+      border-radius:99px;
+      margin:5px 0;
+      opacity:.9;
+    }
+
+    .mobile-nav{
+      display:none;
+      border-top:1px solid var(--border2);
+      padding:14px 0 18px;
+    }
+    .mobile-nav a{
+      display:block;
+      padding:12px 12px;
+      border-radius:14px;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .mobile-nav a:hover{background: rgba(52,211,153,.10); color:var(--text);}
+
+    /* Hero */
+    .hero{
+      padding:64px 0 28px;
+      position:relative;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid rgba(52,211,153,.25);
+      background: rgba(52,211,153,.08);
+      color: rgba(52,211,153,.95);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.02em;
+    }
+    .grid-hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:42px;
+      align-items:center;
+      margin-top:18px;
+    }
+    h1{
+      font-size: clamp(34px, 4.3vw, 64px);
+      line-height:1.05;
+      margin:14px 0 14px;
+      letter-spacing:-.02em;
+    }
+    h1 .accent{color:var(--brand); display:block; margin-top:8px;}
+    .lead{
+      color:var(--muted);
+      font-size: clamp(16px, 1.6vw, 20px);
+      max-width: 60ch;
+      margin:0 0 22px;
+    }
+
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;}
+    .btn{
+      border-radius: 18px;
+      padding:14px 18px;
+      font-weight:900;
+      letter-spacing:.01em;
+      border:1px solid var(--border);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition: all .18s ease;
+      user-select:none;
+    }
+    .btn.primary{
+      background: var(--brand);
+      color:#04110B;
+      border-color: rgba(52,211,153,.55);
+      box-shadow: 0 18px 44px rgba(52,211,153,.18);
+    }
+    .btn.primary:hover{filter:brightness(1.05); transform: translateY(-1px);}
+    .btn.ghost{
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+    .btn.ghost:hover{border-color: rgba(52,211,153,.35); color: rgba(52,211,153,.95);}
+
+    /* Side cards */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .mini{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border2);
+      border-radius: 22px;
+      padding:16px;
+    }
+    .mini strong{
+      font-size:24px;
+      color:var(--brand);
+      display:block;
+      margin-bottom:6px;
+    }
+    .mini p{
+      margin:0;
+      color:var(--muted2);
+      font-size:13px;
+    }
+
+    /* Sections */
+    section{padding:64px 0;}
+    .section-head{
+      max-width: 780px;
+      margin-bottom: 22px;
+    }
+    .kicker{
+      color: rgba(52,211,153,.95);
+      text-transform:uppercase;
+      letter-spacing:.28em;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    h2{
+      font-size: clamp(26px, 3vw, 44px);
+      line-height:1.15;
+      margin:0 0 10px;
+      letter-spacing:-.01em;
+    }
+    .desc{
+      color:var(--muted);
+      font-size: 16px;
+      margin:0;
+    }
+
+    .panel{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--border2);
+      border-radius: var(--radius);
+      padding:22px;
+    }
+
+    /* Stats + Process + Advantages grids */
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
+    .grid-4{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;}
+    .stat strong{
+      font-size:34px;
+      color:var(--brand);
+      display:block;
+      margin-bottom:6px;
+    }
+    .stat span{color:var(--muted); font-size:14px;}
+    .step{
+      background: var(--panel);
+      border:1px solid var(--border2);
+      border-radius: 26px;
+      padding:18px;
+      transition: transform .18s ease;
+    }
+    .step:hover{transform: translateY(-2px);}
+    .step .num{
+      font-size:34px;
+      font-weight:900;
+      color:var(--brand);
+      margin-bottom:8px;
+    }
+    .step h3{margin:0 0 8px; font-size:18px;}
+    .step p{margin:0; color:var(--muted); font-size:14px;}
+
+    .adv{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border2);
+      border-radius: 22px;
+      padding:18px;
+    }
+    .adv h3{margin:0 0 8px; font-size:18px;}
+    .adv p{margin:0; color:var(--muted); font-size:14px;}
+
+    /* Proof / sources */
+    .sources{
+      margin-top:12px;
+      font-size: 12px;
+      color: var(--muted2);
+    }
+    .sources a{color: var(--muted); text-decoration: underline;}
+    .sources a:hover{color: var(--brand);}
+
+    /* Investor CTA */
+    .cta-box{
+      border-radius: 36px;
+      border: 1px solid rgba(52,211,153,.22);
+      background: radial-gradient(900px 500px at 30% 0%, rgba(52,211,153,.14), transparent 60%),
+                  radial-gradient(700px 500px at 90% 60%, rgba(34,211,238,.10), transparent 60%),
+                  rgba(255,255,255,.03);
+      padding: 28px;
+      text-align:center;
+      box-shadow: var(--shadow);
+    }
+
+    /* Contact form */
+    form.contact{
+      display:grid;
+      gap:12px;
+      margin-top: 10px;
+    }
+    .field label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+      font-weight:900;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+    }
+    .field input, .field textarea, .field select{
+      width:100%;
+      padding:14px 14px;
+      border-radius:18px;
+      border:1px solid var(--border2);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      font-size:16px;
+      outline:none;
+    }
+    .field textarea{min-height:120px; resize:vertical;}
+    .field input:focus, .field textarea:focus, .field select:focus{
+      border-color: rgba(52,211,153,.55);
+    }
+    .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    .status{
+      display:none;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid var(--border2);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight:700;
+    }
+    .status.ok{display:block; border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.10); color: var(--text);}
+    .status.err{display:block; border-color: rgba(255,99,99,.35); background: rgba(255,99,99,.10); color: var(--text);}
+
+    footer{
+      border-top:1px solid var(--border2);
+      padding:28px 0;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid-hero{grid-template-columns: 1fr; gap:18px;}
+      .grid-4{grid-template-columns: 1fr 1fr;}
+    }
+    @media (max-width: 760px){
+      nav{display:none;}
+      .menu-btn{display:inline-block;}
+      .mobile-nav{display:block;}
+      .grid-3{grid-template-columns: 1fr;}
+      .grid-4{grid-template-columns: 1fr;}
+      .form-row{grid-template-columns: 1fr;}
+      .brand img{height:52px;}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="topbar">
+      #top
+        assets/ecov-logo.png
+        <div class="wordmark">
+          <strong>EcoV <span style="color:var(--brand)">Materials</span></strong>
+          <small>Circular critical materials</small>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        #aboutAbout</a>
+        #solutionsSolutions</a>
+        #marketMarket</a>
+        #impactImpact</a>
+        #investorsInvestors</a>
+        #contactContact</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav" style="display:none;">
+      #aboutAbout</a>
+      #solutionsSolutions</a>
+      #marketMarket</a>
+      #impactImpact</a>
+      #investorsInvestors</a>
+      #contactContact</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="pill">Investor-ready circular materials platform</span>
+
+      <div class="grid-hero">
+        <div>
+          <h1>
+            Transforming e‑waste into
+            <span class="accent">traceable critical mineral supply</span>
+          </h1>
+
+          <p class="lead">
+            EcoV Materials builds the coordination layer for circular recovery—aggregating end‑of‑life electronics into compliant, traceable feedstock for refiners and industrial buyers supporting the clean energy and advanced manufacturing economy.
+          </p>
+
+          <div class="cta-row">
+            #investorsRequest investor brief →</a>
+            #contactPartner with EcoV</a>
+          </div>
+
+          <p class="sources">
+            Context: Global e‑waste reached <strong>62 million tonnes in 2022</strong>. Sources:
+            <a href="https://unitar.org/about/news-stories/press/global-e-waste-monitor-2024-electronic-waste-rising-five-times-faster-documented-e-waste-recycling" target="_blank" rel="noopener">UNITAR/ITU (GEM 2024)</a>,
+            <a href="https://www.who.int/news-room/fact-sheets/detail/electronic-waste-%28e-waste%29" target="_blank" rel="noopener">WHO</a>.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="mini-grid">
+            <div class="mini">
+              <strong>ESG</strong>
+              <p>Compliance-first recovery pathways and responsible sourcing expectations.</p>
+            </div>
+            <div class="mini" style="margin-top:14px;">
+              <strong style="color:var(--brand2)">EV</strong>
+              <p>Aligned with battery, mobility, and grid storage material demand.</p>
+            </div>
+            <div class="mini">
+              <strong style="color:#fff">Data</strong>
+              <p>Traceability-ready workflows designed for auditable material flows.</p>
+            </div>
+            <div class="mini" style="margin-top:14px;">
+              <strong style="color:#A7F3D0">Net‑Zero</strong>
+              <p>Enabling lower‑carbon sourcing through circular feedstock supply.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / WHY ECOv -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">About</div>
+        <h2>A coordination company for circular critical materials</h2>
+        <p class="desc">
+          EcoV Materials operates at the coordination layer—structuring fragmented e‑waste flows, enforcing documentation and quality controls, and supplying downstream processors with consistent, compliant feedstock.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="adv">
+          <h3>Asset‑light by design</h3>
+          <p>Scale through partnerships, quality systems, and logistics orchestration—not heavy capex processing ownership.</p>
+        </div>
+        <div class="adv">
+          <h3>Traceability as a product</h3>
+          <p>Material documentation, chain‑of‑custody discipline, and compliance alignment built into operations.</p>
+        </div>
+        <div class="adv">
+          <h3>Industrial alignment</h3>
+          <p>Built around the needs of refiners and strategic buyers: consistency, specifications, and reliability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section id="market">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Market</div>
+        <h2>Why now: supply chains need new sources of responsible materials</h2>
+        <p class="desc">
+          Electrification and clean energy deployment are intensifying pressure on mineral supply chains, while e‑waste continues to rise—creating both an environmental risk and a recoverable resource opportunity.
+        </p>
+        <p class="sources">
+          E‑waste and recycling rates: <a href="https://unitar.org/about/news-stories/press/global-e-waste-monitor-2024-electronic-waste-rising-five-times-faster-documented-e-waste-recycling" target="_blank" rel="noopener">UNITAR/ITU (GEM 2024)</a>.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="panel stat">
+          <strong>62 Mt</strong>
+          <span>E‑waste generated globally in 2022 (record). (UNITAR/ITU GEM 2024)</span>
+        </div>
+        <div class="panel stat">
+          <strong>22.3%</strong>
+          <span>Documented formal collection & recycling rate in 2022. (UNITAR/ITU GEM 2024)</span>
+        </div>
+        <div class="panel stat">
+          <strong>$320B</strong>
+          <span>Reported market size for key energy transition minerals in 2022 (IEA reported via press). </span>
+          <div class="sources" style="margin-top:8px;">
+            <a href="https://www.business-standard.com/economy/news/critical-minerals-supply-could-pull-close-to-demand-by-2030-says-iea-123071100824_1.html" target="_blank" rel="noopener">Source</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS / PROCESS -->
+  <section id="solutions">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Solutions</div>
+        <h2>How EcoV works</h2>
+        <p class="desc">
+          A repeatable, auditable workflow that turns end‑of‑life electronics into downstream‑ready feedstock—built for quality, compliance, and scale.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Recover</h3>
+          <p>Source and aggregate end‑of‑life electronics through structured collection and partner channels.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Qualify</h3>
+          <p>Sort, classify, and document material streams to align with technical and compliance requirements.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Trace</h3>
+          <p>Maintain chain‑of‑custody discipline and traceability-ready records across recovery pathways.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h3>Supply</h3>
+          <p>Deliver consistent feedstock lots to refiners and industrial buyers supporting the energy transition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Impact</div>
+        <h2>Lower‑carbon sourcing through circular recovery</h2>
+        <p class="desc">
+          EcoV Materials supports waste diversion, responsible sourcing, and supply chain resilience—advancing circularity while improving accountability in materials flows.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="adv">
+          <h3>E‑waste diversion</h3>
+          <p>Structured recovery pathways reduce landfill pressure and environmental contamination risks.</p>
+        </div>
+        <div class="adv">
+          <h3>Resilient supply</h3>
+          <p>Diversified, documented recovery streams support strategic material security and continuity.</p>
+        </div>
+        <div class="adv">
+          <h3>Compliance readiness</h3>
+          <p>Traceability-first operations align with ESG expectations and procurement transparency needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTORS -->
+  <section id="investors">
+    <div class="container">
+      <div class="cta-box">
+        <div class="kicker">Investors</div>
+        <h2>Building the infrastructure layer for responsible critical materials recovery</h2>
+        <p class="desc" style="max-width:70ch; margin: 0 auto 18px;">
+          EcoV Materials is positioned to support the next generation of circular supply chains through feedstock aggregation, compliance-ready traceability, and strategic ecosystem partnerships.
+        </p>
+
+        <div class="cta-row" style="justify-content:center;">
+          #contactRequest investor brief →</a>
+          #contactDiscuss partnership</a>
+        </div>
+
+        <p class="sources" style="margin-top:14px;">
+          Critical minerals demand dynamics: <a href="https://www.iea.org/reports/global-critical-minerals-outlook-2025" target="_blank" rel="noopener">IEA Global Critical Minerals Outlook</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Contact</div>
+        <h2>Let’s build resilient material systems together</h2>
+        <p class="desc">
+          EcoV welcomes collaboration with investors, industrial partners, recovery networks, sustainability organizations, and technology innovators.
+        </p>
+      </div>
+
+      <div class="panel">
+        <form class="contact" id="contactForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="org">Organization</label>
+              <input id="org" name="organization" type="text" placeholder="Company / institution" />
+            </div>
+            <div class="field">
+              <label for="type">Inquiry type</label>
+              <select id="type" name="inquiry_type" required>
+                <option value="">Select…</option>
+                <option>Investor</option>
+                <option>Industry partner</option>
+                <option>Recovery network</option>
+                <option>Research / collaboration</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Tell us what you’re exploring and how we can help."></textarea>
+          </div>
+
+          <!-- Web3Forms -->
+          <input type="hidden" name="access_key" value="27eeb4ab-bcac-48d5-b1e6-f105535b25b8" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <button class="btn primary" id="sendBtn" type="submit" style="width:100%; border-radius:18px;">Send inquiry</button>
+
+          <div class="status" id="statusBox" role="status" aria-live="polite"></div>
+
+          <div class="sources">
+            Prefer email? info@ecovmaterials.cominfo@ecovmaterials.com</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 EcoV Materials. All rights reserved.</div>
+      <div style="color:var(--muted2)">Circular • Traceable • Scalable</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn?.addEventListener('click', () => {
+    const open = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!open));
+    mobileNav.style.display = open ? 'none' : 'block';
+  });
+  // Close mobile nav when clicking a link
+  mobileNav?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.style.display = 'none';
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Contact form AJAX submit (stay on page)
+  const form = document.getElementById('contactForm');
+  const statusBox = document.getElementById('statusBox');
+  const sendBtn = document.getElementById('sendBtn');
+
+  function showStatus(type, msg){
+    statusBox.className = 'status ' + (type === 'ok' ? 'ok' : 'err');
+    statusBox.textContent = msg;
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      showStatus('err', 'Please complete the required fields before sending.');
+      return;
+    }
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
+    showStatus('ok', 'Sending…');
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        form.reset();
+        showStatus('ok', 'Thanks — your message has been sent. We’ll get back to you soon.');
+      } else {
+        showStatus('err', (data && data.message) ? data.message : 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      showStatus('err', 'Network error. Please try again.');
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send inquiry';
+    }
+  });
+</script>
+
+</body>
+</html>
