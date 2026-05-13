@@ -1,794 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EcoV Materials Inc. | Circular Critical Materials Infrastructure</title>
+  <meta charset="utf-8">
+  <title>EcoV Materials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="EcoV Materials develops traceable circular recovery infrastructure for critical minerals and electronic waste supply chains." />
-
-  <meta property="og:title" content="EcoV Materials Inc." />
-  <meta property="og:description" content="Circular critical materials infrastructure for the next industrial economy." />
-  <meta property="og:type" content="website" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 
   <style>
-    :root {
-      --bg: #07100F;
-      --panel: #0E1715;
-      --panel-2: #111C1A;
-      --text: #EAF4EF;
-      --muted: #9FB2AA;
-      --border: rgba(255,255,255,0.08);
-      --green: #53B97E;
-      --teal: #2E8CA8;
-      --white: #ffffff;
-      --max: 1180px;
-      --shadow: 0 30px 80px rgba(0,0,0,0.45);
-      --radius: 28px;
+    /* ✅ HEADER FIXES ONLY */
+
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(83,185,126,0.14), transparent 35%),
-        radial-gradient(circle at top right, rgba(46,140,168,0.12), transparent 35%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: var(--max);
-      margin: auto;
-      padding: 0 24px;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(7,16,15,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
+    .header-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 20px;
+    }
+
+    /* ✅ LOGO FIX */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo img {
-      height: 56px;
-    }
-
-    .logo-text h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: 20px;
-      letter-spacing: -0.03em;
-    }
-
-    .logo-text p {
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      margin-top: 2px;
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    nav a {
-      color: var(--muted);
-      font-weight: 600;
-      transition: 0.2s ease;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--white);
-    }
-
-    .nav-btn {
-      background: linear-gradient(135deg, var(--green), var(--teal));
-      color: #06110D;
-      padding: 12px 18px;
-      border-radius: 16px;
-      font-weight: 700;
-      box-shadow: 0 14px 30px rgba(83,185,126,0.25);
-    }
-
-    .hero {
-      padding: 110px 0 90px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .tag {
-      display: inline-flex;
-      background: rgba(83,185,126,0.1);
-      border: 1px solid rgba(83,185,126,0.25);
-      color: var(--green);
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 26px;
-    }
-
-    h2 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.04;
-      letter-spacing: -0.05em;
-      margin-bottom: 24px;
-    }
-
-    h2 span {
-      color: var(--green);
+      height: 42px;   /* ✅ controlled professional size */
+      width: auto;
       display: block;
     }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 19px;
-      max-width: 650px;
-      margin-bottom: 36px;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      padding: 16px 24px;
-      border-radius: 18px;
-      font-weight: 700;
-      transition: 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--green), var(--teal));
-      color: #06110D;
-      box-shadow: 0 18px 40px rgba(83,185,126,0.24);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .metric {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 22px;
-      padding: 24px;
-    }
-
-    .metric h3 {
-      font-size: 34px;
-      color: var(--green);
-      margin-bottom: 8px;
-      font-family: 'Sora', sans-serif;
-    }
-
-    .metric p {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    section {
-      padding: 100px 0;
-    }
-
-    .section-title {
-      max-width: 760px;
-      margin-bottom: 56px;
-    }
-
-    .eyebrow {
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .section-title h3 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(34px, 4vw, 54px);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      letter-spacing: -0.04em;
-    }
-
-    .section-title p {
-      color: var(--muted);
+    .brand-name {
       font-size: 18px;
+      font-weight: 600;
+      color: #111827;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      transition: 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(83,185,126,0.3);
-    }
-
-    .card h4 {
-      font-size: 22px;
-      margin-bottom: 14px;
-      font-family: 'Sora', sans-serif;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .process {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .step {
-      background: var(--panel);
-      border-radius: 26px;
-      border: 1px solid var(--border);
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .step-number {
-      font-size: 42px;
-      font-family: 'Sora', sans-serif;
-      color: rgba(83,185,126,0.18);
-      margin-bottom: 18px;
-    }
-
-    .step h5 {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .roadmap {
-      display: grid;
-      gap: 24px;
-    }
-
-    .roadmap-item {
+    /* ✅ NAV FIX */
+    .nav {
       display: flex;
-      gap: 28px;
-      align-items: flex-start;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 28px;
-    }
-
-    .phase {
-      min-width: 100px;
-      font-weight: 800;
-      color: var(--green);
-      font-size: 15px;
-      letter-spacing: 0.08em;
-    }
-
-    .roadmap-item h4 {
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
-
-    .roadmap-item p {
-      color: var(--muted);
-    }
-
-    .investor-box {
-      background:
-        radial-gradient(circle at top left, rgba(83,185,126,0.16), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(46,140,168,0.14), transparent 35%),
-        var(--panel);
-      border-radius: 36px;
-      border: 1px solid rgba(83,185,126,0.18);
-      padding: 70px 50px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .investor-box h3 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(34px, 4vw, 58px);
-      line-height: 1.08;
-      margin-bottom: 20px;
-      letter-spacing: -0.05em;
-    }
-
-    .investor-box p {
-      color: var(--muted);
-      max-width: 760px;
-      margin: auto auto 34px;
-      font-size: 18px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-
-    form {
-      display: grid;
-      gap: 16px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
+      gap: 22px;
     }
 
-    @media (max-width: 1024px) {
-      .hero-grid,
-      .contact-grid,
-      .grid-3,
-      .process {
-        grid-template-columns: 1fr;
-      }
+    .nav a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      font-size: 15px;
+    }
 
-      nav {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 70px;
-      }
+    .nav a:hover {
+      color: #111827;
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container navbar">
+  <header class="site-header">
+    <div class="header-inner">
 
-    <a href="#" class="logo">
-      <img src="assets/ecov-logo.png" alt="EcoV Materials logo">
+      <!-- ✅ CLEAN LOGO + NAME (no duplication issue) -->
+      <a class="brand" href="index.html">
+        <img src="assets/ecov-logo.png" alt="" class="logo">
+        <span class="brand-name">EcoV Materials</span>
+      </a>
 
-      <div class="logo-text">
-        <h1>EcoV Materials Inc.</h1>
-        <p>Circular Critical Materials</p>
-      </div>
-    </a>
+      <!-- ✅ NAV -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="what-we-do.html">What We Do</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#market">Market</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#investors">Investors</a>
-      <a href="#contact" class="nav-btn">Contact</a>
-    </nav>
+    </div>
+  </header>
 
-  </div>
-</header>
+  <main class="container">
 
-<section class="hero">
-  <div class="container hero-grid">
+    <section class="section">
+      <h1>EcoV</h1>
 
-    <div>
-      <div class="tag">Investment-Ready Circular Infrastructure Platform</div>
-
-      <h2>
-        Circular Critical Materials
-        <span>Infrastructure For The Next Industrial Economy</span>
-      </h2>
+      <p><strong>
+        EcoV builds trusted circular supply chains by converting e‑waste into high‑value,
+        traceable critical minerals feedstock.
+      </strong></p>
 
       <p>
-        EcoV Materials develops traceable recovery and coordination systems that transform end‑of‑life electronics into compliant critical materials supply for advanced manufacturing, electrification, and energy transition industries.
+        We bridge the gap between electronic waste, critical minerals demand,
+        and responsible recovery—strengthening resilience, sustainability,
+        and accountability across the supply chain.
       </p>
 
-      <div class="cta-row">
-        <a href="#investors" class="btn-primary">Request Investor Brief</a>
-        <a href="#contact" class="btn-secondary">Strategic Partnership Inquiry</a>
-      </div>
-    </div>
+      <a href="contact.html" class="cta">Get in Touch</a>
+    </section>
 
-    <div class="hero-card">
-      <div class="metrics">
-
-        <div class="metric">
-          <h3>62Mt</h3>
-          <p>Global electronic waste generated annually.</p>
-        </div>
-
-        <div class="metric">
-          <h3>22%</h3>
-          <p>Documented formal recycling and recovery rate.</p>
-        </div>
-
-        <div class="metric">
-          <h3>ESG</h3>
-          <p>Traceability-first compliance architecture.</p>
-        </div>
-
-        <div class="metric">
-          <h3>EV</h3>
-          <p>Aligned with battery and electrification supply chains.</p>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-
-    <div class="section-title">
-      <div class="eyebrow">About EcoV</div>
-
-      <h3>
-        Building resilient and traceable circular materials systems.
-      </h3>
+    <section class="section">
+      <h2>The Problem We Address</h2>
 
       <p>
-        EcoV Materials operates at the coordination layer of the circular economy — aggregating fragmented e‑waste flows, enabling compliant recovery pathways, and supporting industrial-grade traceability for critical materials supply chains.
+        Electronic waste is one of the fastest‑growing waste streams globally—yet it also
+        contains valuable critical minerals essential to clean energy, advanced manufacturing,
+        and digital infrastructure.
       </p>
-    </div>
-
-    <div class="grid-3">
-
-      <div class="card">
-        <h4>Asset-Light Infrastructure</h4>
-        <p>
-          EcoV scales through strategic ecosystem partnerships, logistics coordination, and traceability systems rather than heavy industrial ownership.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Traceability-First Operations</h4>
-        <p>
-          Chain-of-custody discipline and material accountability are integrated into every stage of the recovery process.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Industrial Market Alignment</h4>
-        <p>
-          Designed around the operational needs of refiners, manufacturers, and strategic material buyers.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="solutions">
-  <div class="container">
-
-    <div class="section-title">
-      <div class="eyebrow">Solutions</div>
-
-      <h3>
-        A scalable workflow for circular materials recovery.
-      </h3>
 
       <p>
-        EcoV integrates recovery coordination, qualification systems, and downstream supply alignment into one scalable infrastructure platform.
+        Supply chains for these materials remain fragmented, opaque,
+        and environmentally costly.
       </p>
-    </div>
+    </section>
 
-    <div class="process">
-
-      <div class="step">
-        <div class="step-number">01</div>
-        <h5>Recover</h5>
-        <p>Aggregate end-of-life electronics through structured collection ecosystems.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">02</div>
-        <h5>Qualify</h5>
-        <p>Sort and document material streams according to industrial requirements.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">03</div>
-        <h5>Trace</h5>
-        <p>Enable chain-of-custody accountability and compliance-ready reporting.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">04</div>
-        <h5>Supply</h5>
-        <p>Deliver qualified feedstock to refiners and strategic industrial buyers.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="market">
-  <div class="container">
-
-    <div class="section-title">
-      <div class="eyebrow">Market Opportunity</div>
-
-      <h3>
-        Critical materials supply chains are entering structural transformation.
-      </h3>
-
-      <p>
-        Electrification, AI infrastructure, advanced manufacturing, and battery demand are intensifying pressure on global material systems while e‑waste volumes continue to accelerate.
-      </p>
-    </div>
-
-    <div class="grid-3">
-
-      <div class="card">
-        <h4>Energy Transition</h4>
-        <p>
-          Battery storage, EV adoption, and grid modernization are increasing demand for strategic minerals.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Supply Chain Resilience</h4>
-        <p>
-          Governments and industries are prioritizing secure, diversified, and traceable material sources.
-        </p>
-      </div>
-
-      <div class="card">
-        <h4>Circular Recovery Growth</h4>
-        <p>
-          Circular feedstock systems are becoming essential components of future industrial infrastructure.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="roadmap">
-  <div class="container">
-
-    <div class="section-title">
-      <div class="eyebrow">Strategic Roadmap</div>
-
-      <h3>
-        Building the next generation of circular recovery infrastructure.
-      </h3>
-    </div>
-
-    <div class="roadmap">
-
-      <div class="roadmap-item">
-        <div class="phase">PHASE 1</div>
-        <div>
-          <h4>Ecosystem Formation</h4>
-          <p>Establish recovery partnerships, logistics workflows, and traceability frameworks.</p>
-        </div>
-      </div>
-
-      <div class="roadmap-item">
-        <div class="phase">PHASE 2</div>
-        <div>
-          <h4>Regional Aggregation Infrastructure</h4>
-          <p>Expand qualified recovery networks and scalable coordination systems.</p>
-        </div>
-      </div>
-
-      <div class="roadmap-item">
-        <div class="phase">PHASE 3</div>
-        <div>
-          <h4>Industrial Supply Integration</h4>
-          <p>Strengthen downstream supply relationships with refiners and strategic buyers.</p>
-        </div>
-      </div>
-
-      <div class="roadmap-item">
-        <div class="phase">PHASE 4</div>
-        <div>
-          <h4>Cross-Border Circular Platform</h4>
-          <p>Develop scalable circular materials infrastructure across multiple industrial markets.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="investors">
-  <div class="container">
-
-    <div class="investor-box">
-
-      <div class="eyebrow">Investors & Strategic Partners</div>
-
-      <h3>
-        Infrastructure for responsible critical materials recovery.
-      </h3>
-
-      <p>
-        EcoV Materials is positioned at the intersection of circular economy infrastructure, critical mineral supply resilience, and industrial traceability systems.
-      </p>
-
-      <div class="cta-row" style="justify-content:center;">
-        <a href="#contact" class="btn-primary">Request Investor Brief</a>
-        <a href="#contact" class="btn-secondary">Discuss Partnership</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-
-    <div class="section-title">
-      <div class="eyebrow">Contact</div>
-
-      <h3>
-        Let’s build resilient materials systems together.
-      </h3>
-    </div>
-
-    <div class="contact-grid">
-
-      <div>
-        <div class="card">
-          <h4>Strategic Inquiries</h4>
-          <p>
-            EcoV welcomes collaboration with investors, industrial operators, sustainability organizations, recovery ecosystems, and strategic technology partners.
-          </p>
-
-          <br><br>
-
-          <p>
-            Email:<br>
-            <strong>info@ecovmaterials.com</strong>
-          </p>
-        </div>
-      </div>
-
-      <form action="https://api.web3forms.com/submit" method="POST">
-
-        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-
-        <input type="text" name="name" placeholder="Full Name" required>
-
-        <input type="email" name="email" placeholder="Email Address" required>
-
-        <input type="text" name="organization" placeholder="Organization">
-
-        <textarea name="message" placeholder="Tell us about your inquiry..." required></textarea>
-
-        <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">
-          Send Inquiry
-        </button>
-
-      </form>
-
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container footer-row">
-
-    <div>
-      © 2026 EcoV Materials Inc. All rights reserved.
-    </div>
-
-    <div>
-      Circular • Traceable • Scalable
-    </div>
-
-  </div>
-</footer>
+  </main>
 
 </body>
 </html>
+``
